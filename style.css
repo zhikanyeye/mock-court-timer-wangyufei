@@ -762,76 +762,89 @@ footer {
 
 /* ===== PRESENTATION MODE ===== */
 body.presentation-mode {
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 body.presentation-mode header,
-body.presentation-mode footer,
-body.presentation-mode .sidebar-wrapper {
+body.presentation-mode footer {
     display: none !important;
 }
 
+body.presentation-mode .sidebar-wrapper,
+body.presentation-mode .phase-list {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+
 body.presentation-mode .container {
-    max-width: 100%;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+    max-width: 100% !important;
+    padding: 0 !important;
+    height: 100vh !important;
+    display: block !important;
 }
 
 body.presentation-mode main {
-    display: block;
-    grid-template-columns: 1fr;
-    gap: 0;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
+    display: block !important;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    height: 100vh !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 body.presentation-mode .timer-display {
-    border-radius: 0;
-    min-height: 100vh;
-    height: 100vh;
-    padding: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    border-radius: 0 !important;
+    min-height: 100vh !important;
+    height: 100vh !important;
+    width: 100vw !important;
+    padding: 80px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
 
 body.presentation-mode .time-display {
-    font-size: 16rem;
+    font-size: 16rem !important;
 }
 
 body.presentation-mode .phase-name {
-    font-size: 3.5rem;
+    font-size: 3.5rem !important;
 }
 
 body.presentation-mode .phase-number {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
 }
 
 body.presentation-mode .progress-bar {
-    max-width: 800px;
-    margin: 40px auto;
+    max-width: 800px !important;
+    margin: 40px auto !important;
+    width: 100% !important;
 }
 
 body.presentation-mode .time-info {
-    max-width: 800px;
-    margin: 20px auto 0;
+    max-width: 800px !important;
+    margin: 20px auto 0 !important;
+    width: 100% !important;
 }
 
 body.presentation-mode .btn-fullscreen {
-    top: 30px;
-    right: 30px;
-    padding: 14px 24px;
-    font-size: 1.1rem;
+    top: 30px !important;
+    right: 30px !important;
+    padding: 14px 24px !important;
+    font-size: 1.1rem !important;
 }
 
 body.presentation-mode .btn-prev-phase,
 body.presentation-mode .btn-next-phase {
-    padding: 16px 28px;
-    font-size: 1.1rem;
+    padding: 16px 28px !important;
+    font-size: 1.1rem !important;
 }
 
 /* ===== RESPONSIVE ===== */
