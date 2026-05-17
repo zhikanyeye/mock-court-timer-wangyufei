@@ -486,6 +486,22 @@ main {
     margin-bottom: 40px;
 }
 
+.ending-subtitle {
+    color: #a0a0b0;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+.ending-quote {
+    color: #c9a227;
+    font-size: 1.3rem;
+    font-style: italic;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
 .ending-stats {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 16px;
