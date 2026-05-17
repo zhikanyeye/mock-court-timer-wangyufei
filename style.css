@@ -229,6 +229,92 @@ main {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* ===== FULLSCREEN BUTTON ===== */
+.btn-fullscreen {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(201, 162, 39, 0.4);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: #c9a227;
+    background: rgba(201, 162, 39, 0.1);
+    backdrop-filter: blur(10px);
+    letter-spacing: 1px;
+    z-index: 10;
+}
+
+.btn-fullscreen:hover {
+    background: rgba(201, 162, 39, 0.2);
+    border-color: rgba(201, 162, 39, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+}
+
+.btn-fullscreen .fullscreen-icon {
+    font-size: 1.1rem;
+}
+
+.btn-fullscreen .fullscreen-label {
+    font-size: 0.85rem;
+}
+
+/* ===== PREV PHASE BUTTON ===== */
+.btn-prev-phase {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(155, 89, 182, 0.4);
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: #9b59b6;
+    background: rgba(155, 89, 182, 0.1);
+    backdrop-filter: blur(10px);
+    letter-spacing: 1px;
+}
+
+.btn-prev-phase:hover {
+    background: rgba(155, 89, 182, 0.2);
+    border-color: rgba(155, 89, 182, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
+}
+
+.btn-prev-phase:active {
+    transform: translateY(0);
+}
+
+.btn-prev-phase .prev-icon {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+    transform: rotate(180deg);
+    display: inline-block;
+}
+
+.btn-prev-phase:hover .prev-icon {
+    transform: rotate(180deg) translateX(3px);
+}
+
+.btn-prev-phase .prev-label {
+    font-size: 0.9rem;
+}
+
 /* ===== NEXT PHASE BUTTON ===== */
 .btn-next-phase {
     position: absolute;

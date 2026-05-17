@@ -311,6 +311,79 @@ function restartAll() {
     updateDisplay();
 }
 
+// 上一阶段
+function prevPhase() {
+    if (currentPhase > 0) {
+        currentPhase--;
+        totalTime = phases[currentPhase].duration;
+        if (totalTime !== null) {
+            timeLeft = totalTime;
+        } else {
+            timeLeft = 0;
+        }
+        alertPlayed = false;
+        pauseTimer();
+        updateDisplay();
+    } else {
+        alert('已经是第一个阶段了！');
+    }
+}
+
+// 全屏功能
+function toggleFullscreen() {
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const fullscreenIcon = document.getElementById('fullscreenIcon');
+    const fullscreenLabel = document.getElementById('fullscreenLabel');
+
+    if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
+        // 进入全屏
+        const docEl = document.documentElement;
+        if (docEl.requestFullscreen) {
+            docEl.requestFullscreen();
+        } else if (docEl.webkitRequestFullscreen) {
+            docEl.webkitRequestFullscreen();
+        } else if (docEl.mozRequestFullScreen) {
+            docEl.mozRequestFullScreen();
+        } else if (docEl.msRequestFullscreen) {
+            docEl.msRequestFullscreen();
+        }
+        fullscreenIcon.textContent = '⛶';
+        fullscreenLabel.textContent = '退出全屏';
+    } else {
+        // 退出全屏
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+        fullscreenIcon.textContent = '⛶';
+        fullscreenLabel.textContent = '全屏';
+    }
+}
+
+// 监听全屏变化事件
+document.addEventListener('fullscreenchange', updateFullscreenButton);
+document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+document.addEventListener('mozfullscreenchange', updateFullscreenButton);
+document.addEventListener('MSFullscreenChange', updateFullscreenButton);
+
+function updateFullscreenButton() {
+    const fullscreenIcon = document.getElementById('fullscreenIcon');
+    const fullscreenLabel = document.getElementById('fullscreenLabel');
+
+    if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+        fullscreenIcon.textContent = '⛶';
+        fullscreenLabel.textContent = '退出全屏';
+    } else {
+        fullscreenIcon.textContent = '⛶';
+        fullscreenLabel.textContent = '全屏';
+    }
+}
+
 // 键盘快捷键
 document.addEventListener('keydown', (e) => {
     if (e.code === 'Space') {
@@ -322,8 +395,12 @@ document.addEventListener('keydown', (e) => {
         }
     } else if (e.code === 'ArrowRight') {
         nextPhase();
+    } else if (e.code === 'ArrowLeft') {
+        prevPhase();
     } else if (e.code === 'KeyR') {
         resetTimer();
+    } else if (e.code === 'KeyF') {
+        toggleFullscreen();
     }
 });
 

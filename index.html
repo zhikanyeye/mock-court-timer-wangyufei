@@ -15,6 +15,10 @@
 
         <main>
             <div class="timer-display" id="timerDisplay">
+                <button class="btn-fullscreen" id="fullscreenBtn" onclick="toggleFullscreen()">
+                    <span class="fullscreen-icon" id="fullscreenIcon">⛶</span>
+                    <span class="fullscreen-label" id="fullscreenLabel">全屏</span>
+                </button>
                 <div class="phase-info">
                     <div class="phase-number" id="phaseNumber">第一阶段</div>
                     <div class="phase-name" id="phaseName">开庭准备</div>
@@ -27,6 +31,10 @@
                     <span class="total-time" id="totalTime">总时长: 5分钟</span>
                     <span class="remaining-time" id="remainingTime">剩余: 5分00秒</span>
                 </div>
+                <button class="btn-prev-phase" id="prevPhaseBtn" onclick="prevPhase()">
+                    <span class="prev-icon">➤</span>
+                    <span class="prev-label">上一阶段</span>
+                </button>
                 <button class="btn-next-phase" id="nextPhaseBtn" onclick="nextPhase()">
                     <span class="next-icon">➤</span>
                     <span class="next-label">下一阶段</span>
