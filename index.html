@@ -10,11 +10,11 @@
     <div class="container">
         <header>
             <h1>刑事案例研究-模拟法庭之王雨菲案</h1>
-            <div class="subtitle">审判员计时器</div>
+            <div class="subtitle">课堂模拟法庭</div>
         </header>
 
         <main>
-            <div class="timer-display">
+            <div class="timer-display" id="timerDisplay">
                 <div class="phase-info">
                     <div class="phase-number" id="phaseNumber">第一阶段</div>
                     <div class="phase-name" id="phaseName">开庭准备</div>
@@ -29,6 +29,14 @@
                 </div>
             </div>
 
+            <div class="ending-page" id="endingPage" style="display: none;">
+                <div class="ending-icon">⚖️</div>
+                <h2>模拟法庭结束</h2>
+                <p>王雨菲案庭审流程已全部完成</p>
+                <div class="ending-stats" id="endingStats"></div>
+                <button class="btn btn-primary" onclick="restartAll()">重新开始</button>
+            </div>
+
             <div class="phase-list">
                 <h3>庭审流程</h3>
                 <div class="phase-group">
@@ -40,9 +48,18 @@
                             <span class="phase-duration">5min</span>
                         </div>
                         <div class="phase-controls">
-                            <button class="btn-icon btn-play" onclick="playPhase(0)" title="开始">▶</button>
-                            <button class="btn-icon btn-pause" onclick="pausePhase(0)" title="暂停" disabled>⏸</button>
-                            <button class="btn-icon btn-reset" onclick="resetPhase(0)" title="重置">↺</button>
+                            <button class="btn-text btn-play" onclick="playPhase(0)">
+                                <span class="btn-icon">▶</span>
+                                <span class="btn-label">开始计时</span>
+                            </button>
+                            <button class="btn-text btn-pause" onclick="pausePhase(0)" disabled>
+                                <span class="btn-icon">⏸</span>
+                                <span class="btn-label">暂停计时</span>
+                            </button>
+                            <button class="btn-text btn-reset" onclick="resetPhase(0)">
+                                <span class="btn-icon">↺</span>
+                                <span class="btn-label">重置时间</span>
+                            </button>
                         </div>
                     </div>
                     <div class="phase-item" data-phase="1">
@@ -52,9 +69,18 @@
                             <span class="phase-duration">5min</span>
                         </div>
                         <div class="phase-controls">
-                            <button class="btn-icon btn-play" onclick="playPhase(1)" title="开始">▶</button>
-                            <button class="btn-icon btn-pause" onclick="pausePhase(1)" title="暂停" disabled>⏸</button>
-                            <button class="btn-icon btn-reset" onclick="resetPhase(1)" title="重置">↺</button>
+                            <button class="btn-text btn-play" onclick="playPhase(1)">
+                                <span class="btn-icon">▶</span>
+                                <span class="btn-label">开始计时</span>
+                            </button>
+                            <button class="btn-text btn-pause" onclick="pausePhase(1)" disabled>
+                                <span class="btn-icon">⏸</span>
+                                <span class="btn-label">暂停计时</span>
+                            </button>
+                            <button class="btn-text btn-reset" onclick="resetPhase(1)">
+                                <span class="btn-icon">↺</span>
+                                <span class="btn-label">重置时间</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -68,9 +94,18 @@
                             <span class="phase-duration">5min</span>
                         </div>
                         <div class="phase-controls">
-                            <button class="btn-icon btn-play" onclick="playPhase(2)" title="开始">▶</button>
-                            <button class="btn-icon btn-pause" onclick="pausePhase(2)" title="暂停" disabled>⏸</button>
-                            <button class="btn-icon btn-reset" onclick="resetPhase(2)" title="重置">↺</button>
+                            <button class="btn-text btn-play" onclick="playPhase(2)">
+                                <span class="btn-icon">▶</span>
+                                <span class="btn-label">开始计时</span>
+                            </button>
+                            <button class="btn-text btn-pause" onclick="pausePhase(2)" disabled>
+                                <span class="btn-icon">⏸</span>
+                                <span class="btn-label">暂停计时</span>
+                            </button>
+                            <button class="btn-text btn-reset" onclick="resetPhase(2)">
+                                <span class="btn-icon">↺</span>
+                                <span class="btn-label">重置时间</span>
+                            </button>
                         </div>
                     </div>
                     <div class="phase-item" data-phase="3">
@@ -80,9 +115,18 @@
                             <span class="phase-duration">5min</span>
                         </div>
                         <div class="phase-controls">
-                            <button class="btn-icon btn-play" onclick="playPhase(3)" title="开始">▶</button>
-                            <button class="btn-icon btn-pause" onclick="pausePhase(3)" title="暂停" disabled>⏸</button>
-                            <button class="btn-icon btn-reset" onclick="resetPhase(3)" title="重置">↺</button>
+                            <button class="btn-text btn-play" onclick="playPhase(3)">
+                                <span class="btn-icon">▶</span>
+                                <span class="btn-label">开始计时</span>
+                            </button>
+                            <button class="btn-text btn-pause" onclick="pausePhase(3)" disabled>
+                                <span class="btn-icon">⏸</span>
+                                <span class="btn-label">暂停计时</span>
+                            </button>
+                            <button class="btn-text btn-reset" onclick="resetPhase(3)">
+                                <span class="btn-icon">↺</span>
+                                <span class="btn-label">重置时间</span>
+                            </button>
                         </div>
                     </div>
                     <div class="phase-item" data-phase="4">
@@ -92,9 +136,18 @@
                             <span class="phase-duration">10min</span>
                         </div>
                         <div class="phase-controls">
-                            <button class="btn-icon btn-play" onclick="playPhase(4)" title="开始">▶</button>
-                            <button class="btn-icon btn-pause" onclick="pausePhase(4)" title="暂停" disabled>⏸</button>
-                            <button class="btn-icon btn-reset" onclick="resetPhase(4)" title="重置">↺</button>
+                            <button class="btn-text btn-play" onclick="playPhase(4)">
+                                <span class="btn-icon">▶</span>
+                                <span class="btn-label">开始计时</span>
+                            </button>
+                            <button class="btn-text btn-pause" onclick="pausePhase(4)" disabled>
+                                <span class="btn-icon">⏸</span>
+                                <span class="btn-label">暂停计时</span>
+                            </button>
+                            <button class="btn-text btn-reset" onclick="resetPhase(4)">
+                                <span class="btn-icon">↺</span>
+                                <span class="btn-label">重置时间</span>
+                            </button>
                         </div>
                     </div>
                     <div class="phase-item" data-phase="5">
@@ -104,9 +157,18 @@
                             <span class="phase-duration">10min</span>
                         </div>
                         <div class="phase-controls">
-                            <button class="btn-icon btn-play" onclick="playPhase(5)" title="开始">▶</button>
-                            <button class="btn-icon btn-pause" onclick="pausePhase(5)" title="暂停" disabled>⏸</button>
-                            <button class="btn-icon btn-reset" onclick="resetPhase(5)" title="重置">↺</button>
+                            <button class="btn-text btn-play" onclick="playPhase(5)">
+                                <span class="btn-icon">▶</span>
+                                <span class="btn-label">开始计时</span>
+                            </button>
+                            <button class="btn-text btn-pause" onclick="pausePhase(5)" disabled>
+                                <span class="btn-icon">⏸</span>
+                                <span class="btn-label">暂停计时</span>
+                            </button>
+                            <button class="btn-text btn-reset" onclick="resetPhase(5)">
+                                <span class="btn-icon">↺</span>
+                                <span class="btn-label">重置时间</span>
+                            </button>
                         </div>
                     </div>
                     <div class="phase-item" data-phase="6">
@@ -116,9 +178,18 @@
                             <span class="phase-duration">25min</span>
                         </div>
                         <div class="phase-controls">
-                            <button class="btn-icon btn-play" onclick="playPhase(6)" title="开始">▶</button>
-                            <button class="btn-icon btn-pause" onclick="pausePhase(6)" title="暂停" disabled>⏸</button>
-                            <button class="btn-icon btn-reset" onclick="resetPhase(6)" title="重置">↺</button>
+                            <button class="btn-text btn-play" onclick="playPhase(6)">
+                                <span class="btn-icon">▶</span>
+                                <span class="btn-label">开始计时</span>
+                            </button>
+                            <button class="btn-text btn-pause" onclick="pausePhase(6)" disabled>
+                                <span class="btn-icon">⏸</span>
+                                <span class="btn-label">暂停计时</span>
+                            </button>
+                            <button class="btn-text btn-reset" onclick="resetPhase(6)">
+                                <span class="btn-icon">↺</span>
+                                <span class="btn-label">重置时间</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -132,9 +203,18 @@
                             <span class="phase-duration">10min</span>
                         </div>
                         <div class="phase-controls">
-                            <button class="btn-icon btn-play" onclick="playPhase(7)" title="开始">▶</button>
-                            <button class="btn-icon btn-pause" onclick="pausePhase(7)" title="暂停" disabled>⏸</button>
-                            <button class="btn-icon btn-reset" onclick="resetPhase(7)" title="重置">↺</button>
+                            <button class="btn-text btn-play" onclick="playPhase(7)">
+                                <span class="btn-icon">▶</span>
+                                <span class="btn-label">开始计时</span>
+                            </button>
+                            <button class="btn-text btn-pause" onclick="pausePhase(7)" disabled>
+                                <span class="btn-icon">⏸</span>
+                                <span class="btn-label">暂停计时</span>
+                            </button>
+                            <button class="btn-text btn-reset" onclick="resetPhase(7)">
+                                <span class="btn-icon">↺</span>
+                                <span class="btn-label">重置时间</span>
+                            </button>
                         </div>
                     </div>
                     <div class="phase-item" data-phase="8">
@@ -144,9 +224,18 @@
                             <span class="phase-duration">10min</span>
                         </div>
                         <div class="phase-controls">
-                            <button class="btn-icon btn-play" onclick="playPhase(8)" title="开始">▶</button>
-                            <button class="btn-icon btn-pause" onclick="pausePhase(8)" title="暂停" disabled>⏸</button>
-                            <button class="btn-icon btn-reset" onclick="resetPhase(8)" title="重置">↺</button>
+                            <button class="btn-text btn-play" onclick="playPhase(8)">
+                                <span class="btn-icon">▶</span>
+                                <span class="btn-label">开始计时</span>
+                            </button>
+                            <button class="btn-text btn-pause" onclick="pausePhase(8)" disabled>
+                                <span class="btn-icon">⏸</span>
+                                <span class="btn-label">暂停计时</span>
+                            </button>
+                            <button class="btn-text btn-reset" onclick="resetPhase(8)">
+                                <span class="btn-icon">↺</span>
+                                <span class="btn-label">重置时间</span>
+                            </button>
                         </div>
                     </div>
                     <div class="phase-item" data-phase="9">
@@ -156,9 +245,18 @@
                             <span class="phase-duration">20min</span>
                         </div>
                         <div class="phase-controls">
-                            <button class="btn-icon btn-play" onclick="playPhase(9)" title="开始">▶</button>
-                            <button class="btn-icon btn-pause" onclick="pausePhase(9)" title="暂停" disabled>⏸</button>
-                            <button class="btn-icon btn-reset" onclick="resetPhase(9)" title="重置">↺</button>
+                            <button class="btn-text btn-play" onclick="playPhase(9)">
+                                <span class="btn-icon">▶</span>
+                                <span class="btn-label">开始计时</span>
+                            </button>
+                            <button class="btn-text btn-pause" onclick="pausePhase(9)" disabled>
+                                <span class="btn-icon">⏸</span>
+                                <span class="btn-label">暂停计时</span>
+                            </button>
+                            <button class="btn-text btn-reset" onclick="resetPhase(9)">
+                                <span class="btn-icon">↺</span>
+                                <span class="btn-label">重置时间</span>
+                            </button>
                         </div>
                     </div>
                     <div class="phase-item" data-phase="10">
@@ -168,9 +266,56 @@
                             <span class="phase-duration">5min</span>
                         </div>
                         <div class="phase-controls">
-                            <button class="btn-icon btn-play" onclick="playPhase(10)" title="开始">▶</button>
-                            <button class="btn-icon btn-pause" onclick="pausePhase(10)" title="暂停" disabled>⏸</button>
-                            <button class="btn-icon btn-reset" onclick="resetPhase(10)" title="重置">↺</button>
+                            <button class="btn-text btn-play" onclick="playPhase(10)">
+                                <span class="btn-icon">▶</span>
+                                <span class="btn-label">开始计时</span>
+                            </button>
+                            <button class="btn-text btn-pause" onclick="pausePhase(10)" disabled>
+                                <span class="btn-icon">⏸</span>
+                                <span class="btn-label">暂停计时</span>
+                            </button>
+                            <button class="btn-text btn-reset" onclick="resetPhase(10)">
+                                <span class="btn-icon">↺</span>
+                                <span class="btn-label">重置时间</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-group">
+                    <div class="group-title">第四阶段：点评与总结</div>
+                    <div class="phase-item" data-phase="11">
+                        <div class="phase-content">
+                            <span class="phase-step">1</span>
+                            <span class="phase-text">老师点评</span>
+                            <span class="phase-duration unlimited">不限时</span>
+                        </div>
+                        <div class="phase-controls">
+                            <button class="btn-text btn-play" onclick="playPhase(11)">
+                                <span class="btn-icon">▶</span>
+                                <span class="btn-label">开始计时</span>
+                            </button>
+                            <button class="btn-text btn-pause" onclick="pausePhase(11)" disabled>
+                                <span class="btn-icon">⏸</span>
+                                <span class="btn-label">暂停计时</span>
+                            </button>
+                            <button class="btn-text btn-reset" onclick="resetPhase(11)">
+                                <span class="btn-icon">↺</span>
+                                <span class="btn-label">重置时间</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="phase-item" data-phase="12">
+                        <div class="phase-content">
+                            <span class="phase-step">2</span>
+                            <span class="phase-text">结束语</span>
+                            <span class="phase-duration">-</span>
+                        </div>
+                        <div class="phase-controls">
+                            <button class="btn-text btn-end" onclick="showEnding()">
+                                <span class="btn-icon">✓</span>
+                                <span class="btn-label">结束庭审</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -178,7 +323,7 @@
         </main>
 
         <footer>
-            <p>模拟法庭计时器 | 首届甘肃省大学生模拟审判大赛</p>
+            <p>课堂模拟法庭计时器 | 刑事案例研究</p>
         </footer>
     </div>
 
