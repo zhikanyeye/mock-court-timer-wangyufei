@@ -325,39 +325,29 @@ function prevPhase() {
     }
 }
 
-// 全屏功能 - 只显示计时器和阶段列表
+// 全屏功能 - 只显示计时器，隐藏其他所有元素
 function toggleFullscreen() {
     const body = document.body;
     const fullscreenIcon = document.getElementById('fullscreenIcon');
     const fullscreenLabel = document.getElementById('fullscreenLabel');
+    const sidebar = document.querySelector('.sidebar-wrapper');
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
 
     if (!body.classList.contains('presentation-mode')) {
         // 进入演示模式
         body.classList.add('presentation-mode');
+        if (sidebar) sidebar.style.display = 'none';
+        if (header) header.style.display = 'none';
+        if (footer) footer.style.display = 'none';
         fullscreenIcon.textContent = '⛶';
         fullscreenLabel.textContent = '退出全屏';
     } else {
         // 退出演示模式
         body.classList.remove('presentation-mode');
-        fullscreenIcon.textContent = '⛶';
-        fullscreenLabel.textContent = '全屏';
-    }
-}
-
-// 监听全屏变化事件
-document.addEventListener('fullscreenchange', updateFullscreenButton);
-document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
-document.addEventListener('mozfullscreenchange', updateFullscreenButton);
-document.addEventListener('MSFullscreenChange', updateFullscreenButton);
-
-function updateFullscreenButton() {
-    const fullscreenIcon = document.getElementById('fullscreenIcon');
-    const fullscreenLabel = document.getElementById('fullscreenLabel');
-
-    if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
-        fullscreenIcon.textContent = '⛶';
-        fullscreenLabel.textContent = '退出全屏';
-    } else {
+        if (sidebar) sidebar.style.display = '';
+        if (header) header.style.display = '';
+        if (footer) footer.style.display = '';
         fullscreenIcon.textContent = '⛶';
         fullscreenLabel.textContent = '全屏';
     }
