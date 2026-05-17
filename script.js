@@ -329,37 +329,20 @@ function prevPhase() {
     }
 }
 
-// 全屏功能
+// 全屏功能 - 只显示计时器和阶段列表
 function toggleFullscreen() {
-    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const body = document.body;
     const fullscreenIcon = document.getElementById('fullscreenIcon');
     const fullscreenLabel = document.getElementById('fullscreenLabel');
 
-    if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
-        // 进入全屏
-        const docEl = document.documentElement;
-        if (docEl.requestFullscreen) {
-            docEl.requestFullscreen();
-        } else if (docEl.webkitRequestFullscreen) {
-            docEl.webkitRequestFullscreen();
-        } else if (docEl.mozRequestFullScreen) {
-            docEl.mozRequestFullScreen();
-        } else if (docEl.msRequestFullscreen) {
-            docEl.msRequestFullscreen();
-        }
+    if (!body.classList.contains('presentation-mode')) {
+        // 进入演示模式
+        body.classList.add('presentation-mode');
         fullscreenIcon.textContent = '⛶';
         fullscreenLabel.textContent = '退出全屏';
     } else {
-        // 退出全屏
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-        } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-        }
+        // 退出演示模式
+        body.classList.remove('presentation-mode');
         fullscreenIcon.textContent = '⛶';
         fullscreenLabel.textContent = '全屏';
     }
