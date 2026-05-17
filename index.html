@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刑事案例研究-模拟法庭之王雨菲案</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>刑事案例研究-模拟法庭之王雨菲案</h1>
+            <div class="subtitle">审判员计时器</div>
+        </header>
+
+        <main>
+            <div class="timer-display">
+                <div class="phase-info">
+                    <div class="phase-number" id="phaseNumber">第一阶段</div>
+                    <div class="phase-name" id="phaseName">开庭准备</div>
+                </div>
+                <div class="time-display" id="timeDisplay">05:00</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-info">
+                    <span class="total-time" id="totalTime">总时长: 5分钟</span>
+                    <span class="remaining-time" id="remainingTime">剩余: 5分00秒</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-primary" id="startBtn" onclick="startTimer()">开始</button>
+                <button class="btn btn-warning" id="pauseBtn" onclick="pauseTimer()" disabled>暂停</button>
+                <button class="btn btn-danger" id="resetBtn" onclick="resetTimer()">重置</button>
+                <button class="btn btn-next" id="nextBtn" onclick="nextPhase()">下一阶段</button>
+            </div>
+
+            <div class="phase-list">
+                <h3>庭审流程</h3>
+                <div class="phase-group">
+                    <div class="group-title">第一阶段</div>
+                    <div class="phase-item active" data-phase="0" onclick="jumpToPhase(0)">
+                        <span class="phase-step">1</span>
+                        <span class="phase-text">开庭准备</span>
+                        <span class="phase-duration">5min</span>
+                    </div>
+                    <div class="phase-item" data-phase="1" onclick="jumpToPhase(1)">
+                        <span class="phase-step">2</span>
+                        <span class="phase-text">身份核对、告知权力</span>
+                        <span class="phase-duration">5min</span>
+                    </div>
+                </div>
+
+                <div class="phase-group">
+                    <div class="group-title">第二阶段：法庭调查</div>
+                    <div class="phase-item" data-phase="2" onclick="jumpToPhase(2)">
+                        <span class="phase-step">1</span>
+                        <span class="phase-text">公诉人宣读起诉书</span>
+                        <span class="phase-duration">5min</span>
+                    </div>
+                    <div class="phase-item" data-phase="3" onclick="jumpToPhase(3)">
+                        <span class="phase-step">2</span>
+                        <span class="phase-text">被告人自行供述和辩解</span>
+                        <span class="phase-duration">5min</span>
+                    </div>
+                    <div class="phase-item" data-phase="4" onclick="jumpToPhase(4)">
+                        <span class="phase-step">3</span>
+                        <span class="phase-text">公诉人讯问被告人</span>
+                        <span class="phase-duration">10min</span>
+                    </div>
+                    <div class="phase-item" data-phase="5" onclick="jumpToPhase(5)">
+                        <span class="phase-step">4</span>
+                        <span class="phase-text">辩护人发问被告人</span>
+                        <span class="phase-duration">10min</span>
+                    </div>
+                    <div class="phase-item" data-phase="6" onclick="jumpToPhase(6)">
+                        <span class="phase-step">5</span>
+                        <span class="phase-text">举证质证</span>
+                        <span class="phase-duration">25min</span>
+                    </div>
+                </div>
+
+                <div class="phase-group">
+                    <div class="group-title">第三阶段：法庭辩论</div>
+                    <div class="phase-item" data-phase="7" onclick="jumpToPhase(7)">
+                        <span class="phase-step">1</span>
+                        <span class="phase-text">公诉人发表公诉意见</span>
+                        <span class="phase-duration">10min</span>
+                    </div>
+                    <div class="phase-item" data-phase="8" onclick="jumpToPhase(8)">
+                        <span class="phase-step">2</span>
+                        <span class="phase-text">辩护人发表辩护意见</span>
+                        <span class="phase-duration">10min</span>
+                    </div>
+                    <div class="phase-item" data-phase="9" onclick="jumpToPhase(9)">
+                        <span class="phase-step">3</span>
+                        <span class="phase-text">第二轮辩论</span>
+                        <span class="phase-duration">20min</span>
+                    </div>
+                    <div class="phase-item" data-phase="10" onclick="jumpToPhase(10)">
+                        <span class="phase-step">4</span>
+                        <span class="phase-text">被告人最后陈述</span>
+                        <span class="phase-duration">5min</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>模拟法庭计时器 | 首届甘肃省大学生模拟审判大赛</p>
+        </footer>
+    </div>
+
+    <audio id="alertSound" preload="auto">
+        <source src="alert.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
