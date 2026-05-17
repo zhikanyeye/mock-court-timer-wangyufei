@@ -30,7 +30,6 @@ const phaseName = document.getElementById('phaseName');
 const progressFill = document.getElementById('progressFill');
 const totalTimeEl = document.getElementById('totalTime');
 const remainingTimeEl = document.getElementById('remainingTime');
-const alertSound = document.getElementById('alertSound');
 const timerDisplay = document.getElementById('timerDisplay');
 const endingPage = document.getElementById('endingPage');
 
@@ -114,33 +113,30 @@ function updateDisplay() {
 }
 
 function playAlert() {
-    if (alertSound && alertSound.readyState >= 2) {
-        alertSound.currentTime = 0;
-        alertSound.play().catch(e => {
-            console.log('音频播放失败:', e);
-            playBeep();
-        });
-    } else {
-        playBeep();
-    }
-}
-
-function playBeep() {
     try {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const oscillator = audioContext.createOscillator();
-        const gainNode = audioContext.createGain();
-
-        oscillator.connect(gainNode);
-        gainNode.connect(audioContext.destination);
-
-        oscillator.frequency.value = 800;
-        oscillator.type = 'sine';
-        gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-
-        oscillator.start(audioContext.currentTime);
-        oscillator.stop(audioContext.currentTime + 0.5);
+        
+        // 创建三个连续的提示音（类似法庭铃声）
+        const now = audioContext.currentTime;
+        
+        for (let i = 0; i < 3; i++) {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 1000;
+            oscillator.type = 'sine';
+            
+            const startTime = now + i * 0.3;
+            gainNode.gain.setValueAtTime(0, startTime);
+            gainNode.gain.linearRampToValueAtTime(0.4, startTime + 0.05);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.4);
+            
+            oscillator.start(startTime);
+            oscillator.stop(startTime + 0.4);
+        }
     } catch (e) {
         console.log('Web Audio API播放失败:', e);
     }
