@@ -31,6 +31,20 @@
                     <span class="total-time" id="totalTime">总时长: 5分钟</span>
                     <span class="remaining-time" id="remainingTime">剩余: 5分00秒</span>
                 </div>
+                <div class="timer-main-controls" id="timerMainControls">
+                    <button class="btn-main-control btn-main-play" id="mainPlayBtn" onclick="startTimer()">
+                        <span class="main-icon">▶</span>
+                        <span class="main-label">开始</span>
+                    </button>
+                    <button class="btn-main-control btn-main-pause" id="mainPauseBtn" onclick="pauseTimer()" disabled>
+                        <span class="main-icon">⏸</span>
+                        <span class="main-label">暂停</span>
+                    </button>
+                    <button class="btn-main-control btn-main-reset" id="mainResetBtn" onclick="resetTimer()">
+                        <span class="main-icon">↺</span>
+                        <span class="main-label">重置</span>
+                    </button>
+                </div>
                 <button class="btn-prev-phase" id="prevPhaseBtn" onclick="prevPhase()">
                     <span class="prev-icon">➤</span>
                     <span class="prev-label">上一阶段</span>

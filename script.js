@@ -68,6 +68,12 @@ function updatePhaseControls() {
             pauseBtn.disabled = true;
         }
     });
+
+    // 更新主控制按钮状态
+    const mainPlayBtn = document.getElementById('mainPlayBtn');
+    const mainPauseBtn = document.getElementById('mainPauseBtn');
+    if (mainPlayBtn) mainPlayBtn.disabled = isRunning;
+    if (mainPauseBtn) mainPauseBtn.disabled = !isRunning;
 }
 
 function updateDisplay() {
