@@ -419,6 +419,15 @@ main {
     box-shadow: 0 4px 15px rgba(149, 165, 166, 0.5);
 }
 
+.btn-main-end {
+    background: linear-gradient(135deg, #e94560, #c73e54);
+    box-shadow: 0 2px 8px rgba(233, 69, 96, 0.3);
+}
+
+.btn-main-end:hover {
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.5);
+}
+
 .btn-next-phase .next-icon {
     font-size: 1rem;
     transition: transform 0.3s ease;

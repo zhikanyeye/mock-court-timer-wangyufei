@@ -72,8 +72,16 @@ function updatePhaseControls() {
     // 更新主控制按钮状态
     const mainPlayBtn = document.getElementById('mainPlayBtn');
     const mainPauseBtn = document.getElementById('mainPauseBtn');
+    const mainResetBtn = document.getElementById('mainResetBtn');
+    const mainEndBtn = document.getElementById('mainEndBtn');
     if (mainPlayBtn) mainPlayBtn.disabled = isRunning;
     if (mainPauseBtn) mainPauseBtn.disabled = !isRunning;
+
+    const isEndingPhase = currentPhase === phases.length - 1;
+    if (mainPlayBtn) mainPlayBtn.style.display = isEndingPhase ? 'none' : '';
+    if (mainPauseBtn) mainPauseBtn.style.display = isEndingPhase ? 'none' : '';
+    if (mainResetBtn) mainResetBtn.style.display = isEndingPhase ? 'none' : '';
+    if (mainEndBtn) mainEndBtn.style.display = isEndingPhase ? '' : 'none';
 }
 
 function updateDisplay() {
