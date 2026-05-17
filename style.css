@@ -248,6 +248,7 @@ main {
     color: #c9a227;
     background: rgba(201, 162, 39, 0.1);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     letter-spacing: 1px;
     z-index: 10;
 }
@@ -286,6 +287,7 @@ main {
     color: #9b59b6;
     background: rgba(155, 89, 182, 0.1);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     letter-spacing: 1px;
 }
 
@@ -334,6 +336,7 @@ main {
     color: #3498db;
     background: rgba(52, 152, 219, 0.1);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     letter-spacing: 1px;
 }
 
@@ -374,6 +377,7 @@ main {
     transition: all 0.3s ease;
     color: #fff;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     letter-spacing: 1px;
 }
 
@@ -544,6 +548,7 @@ main {
     color: #fff;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .btn-text:hover {
