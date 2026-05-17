@@ -25,8 +25,6 @@ const phaseName = document.getElementById('phaseName');
 const progressFill = document.getElementById('progressFill');
 const totalTimeEl = document.getElementById('totalTime');
 const remainingTimeEl = document.getElementById('remainingTime');
-const startBtn = document.getElementById('startBtn');
-const pauseBtn = document.getElementById('pauseBtn');
 const alertSound = document.getElementById('alertSound');
 
 function formatTime(seconds) {
@@ -42,6 +40,28 @@ function formatTimeChinese(seconds) {
         return `${mins}分${secs}秒`;
     }
     return `${secs}秒`;
+}
+
+function updatePhaseControls() {
+    document.querySelectorAll('.phase-item').forEach((item, index) => {
+        const playBtn = item.querySelector('.btn-play');
+        const pauseBtn = item.querySelector('.btn-pause');
+
+        if (index === currentPhase && isRunning) {
+            playBtn.disabled = true;
+            pauseBtn.disabled = false;
+        } else if (index === currentPhase && !isRunning && timeLeft < totalTime && timeLeft > 0) {
+            playBtn.disabled = false;
+            playBtn.textContent = '▶';
+            playBtn.title = '继续';
+            pauseBtn.disabled = true;
+        } else {
+            playBtn.disabled = false;
+            playBtn.textContent = '▶';
+            playBtn.title = '开始';
+            pauseBtn.disabled = true;
+        }
+    });
 }
 
 function updateDisplay() {
@@ -68,6 +88,8 @@ function updateDisplay() {
         }
     });
 
+    updatePhaseControls();
+
     // 视觉警告效果
     timeDisplay.classList.remove('warning', 'danger');
     if (timeLeft <= 10 && timeLeft > 0) {
@@ -82,7 +104,6 @@ function playAlert() {
         alertSound.currentTime = 0;
         alertSound.play().catch(e => {
             console.log('音频播放失败:', e);
-            // 备用：使用Web Audio API生成提示音
             playBeep();
         });
     } else {
@@ -135,9 +156,7 @@ function startTimer() {
     if (!isRunning) {
         isRunning = true;
         timerInterval = setInterval(tick, 1000);
-        startBtn.disabled = true;
-        pauseBtn.disabled = false;
-        startBtn.textContent = '进行中';
+        updatePhaseControls();
     }
 }
 
@@ -145,9 +164,7 @@ function pauseTimer() {
     if (isRunning) {
         isRunning = false;
         clearInterval(timerInterval);
-        startBtn.disabled = false;
-        pauseBtn.disabled = true;
-        startBtn.textContent = '继续';
+        updatePhaseControls();
     }
 }
 
@@ -155,7 +172,7 @@ function resetTimer() {
     pauseTimer();
     timeLeft = totalTime;
     alertPlayed = false;
-    startBtn.textContent = '开始';
+    updatePhaseControls();
     updateDisplay();
 }
 
@@ -166,7 +183,6 @@ function nextPhase() {
         timeLeft = totalTime;
         alertPlayed = false;
         pauseTimer();
-        startBtn.textContent = '开始';
         updateDisplay();
     } else {
         alert('已经是最后一个阶段了！');
@@ -180,8 +196,29 @@ function jumpToPhase(index) {
         timeLeft = totalTime;
         alertPlayed = false;
         pauseTimer();
-        startBtn.textContent = '开始';
         updateDisplay();
+    }
+}
+
+// 阶段卡片控制函数
+function playPhase(index) {
+    if (index !== currentPhase) {
+        jumpToPhase(index);
+    }
+    startTimer();
+}
+
+function pausePhase(index) {
+    if (index === currentPhase) {
+        pauseTimer();
+    }
+}
+
+function resetPhase(index) {
+    if (index === currentPhase) {
+        resetTimer();
+    } else {
+        jumpToPhase(index);
     }
 }
 
