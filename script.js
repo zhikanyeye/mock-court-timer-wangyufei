@@ -78,10 +78,10 @@ function updatePhaseControls() {
     if (mainPauseBtn) mainPauseBtn.disabled = !isRunning;
 
     const isEndingPhase = currentPhase === phases.length - 1;
-    if (mainPlayBtn) mainPlayBtn.style.display = isEndingPhase ? 'none' : '';
-    if (mainPauseBtn) mainPauseBtn.style.display = isEndingPhase ? 'none' : '';
-    if (mainResetBtn) mainResetBtn.style.display = isEndingPhase ? 'none' : '';
-    if (mainEndBtn) mainEndBtn.style.display = isEndingPhase ? '' : 'none';
+    if (mainPlayBtn) mainPlayBtn.style.display = isEndingPhase ? 'none' : 'flex';
+    if (mainPauseBtn) mainPauseBtn.style.display = isEndingPhase ? 'none' : 'flex';
+    if (mainResetBtn) mainResetBtn.style.display = isEndingPhase ? 'none' : 'flex';
+    if (mainEndBtn) mainEndBtn.style.display = isEndingPhase ? 'flex' : 'none';
 }
 
 function updateDisplay() {
