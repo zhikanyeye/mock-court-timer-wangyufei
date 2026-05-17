@@ -331,33 +331,57 @@ function prevPhase() {
     }
 }
 
-// 全屏功能 - 只显示计时器，隐藏其他所有元素
 function toggleFullscreen() {
-    const body = document.body;
-    const fullscreenIcon = document.getElementById('fullscreenIcon');
-    const fullscreenLabel = document.getElementById('fullscreenLabel');
-    const sidebar = document.querySelector('.sidebar-wrapper');
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
-
-    if (!body.classList.contains('presentation-mode')) {
-        // 进入演示模式
-        body.classList.add('presentation-mode');
-        if (sidebar) sidebar.style.display = 'none';
-        if (header) header.style.display = 'none';
-        if (footer) footer.style.display = 'none';
-        fullscreenIcon.textContent = '⛶';
-        fullscreenLabel.textContent = '退出全屏';
+    if (!document.fullscreenElement) {
+        const container = document.querySelector('.container');
+        if (container.requestFullscreen) {
+            container.requestFullscreen();
+        } else if (container.webkitRequestFullscreen) {
+            container.webkitRequestFullscreen();
+        } else if (container.msRequestFullscreen) {
+            container.msRequestFullscreen();
+        }
     } else {
-        // 退出演示模式
-        body.classList.remove('presentation-mode');
-        if (sidebar) sidebar.style.display = '';
-        if (header) header.style.display = '';
-        if (footer) footer.style.display = '';
-        fullscreenIcon.textContent = '⛶';
-        fullscreenLabel.textContent = '全屏';
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
     }
 }
+
+function enterFullscreenUI() {
+    document.body.classList.add('presentation-mode');
+    const icon = document.getElementById('fullscreenIcon');
+    const label = document.getElementById('fullscreenLabel');
+    if (icon) icon.textContent = '✕';
+    if (label) label.textContent = '退出全屏';
+}
+
+function exitFullscreenUI() {
+    document.body.classList.remove('presentation-mode');
+    const icon = document.getElementById('fullscreenIcon');
+    const label = document.getElementById('fullscreenLabel');
+    if (icon) icon.textContent = '⛶';
+    if (label) label.textContent = '全屏';
+}
+
+document.addEventListener('fullscreenchange', function() {
+    if (document.fullscreenElement) {
+        enterFullscreenUI();
+    } else {
+        exitFullscreenUI();
+    }
+});
+document.addEventListener('webkitfullscreenchange', function() {
+    if (document.webkitFullscreenElement) {
+        enterFullscreenUI();
+    } else {
+        exitFullscreenUI();
+    }
+});
 
 // 键盘快捷键
 document.addEventListener('keydown', (e) => {
