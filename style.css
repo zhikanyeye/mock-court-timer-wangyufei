@@ -420,6 +420,7 @@ main {
 }
 
 .btn-main-end {
+    display: none;
     background: linear-gradient(135deg, #e94560, #c73e54);
     box-shadow: 0 2px 8px rgba(233, 69, 96, 0.3);
 }
