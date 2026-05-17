@@ -766,8 +766,9 @@ body.presentation-mode {
 }
 
 body.presentation-mode header,
-body.presentation-mode footer {
-    display: none;
+body.presentation-mode footer,
+body.presentation-mode .sidebar-wrapper {
+    display: none !important;
 }
 
 body.presentation-mode .container {
@@ -779,7 +780,8 @@ body.presentation-mode .container {
 }
 
 body.presentation-mode main {
-    grid-template-columns: 1fr 380px;
+    display: block;
+    grid-template-columns: 1fr;
     gap: 0;
     height: 100vh;
     padding: 0;
@@ -789,32 +791,47 @@ body.presentation-mode main {
 body.presentation-mode .timer-display {
     border-radius: 0;
     min-height: 100vh;
-    padding: 60px;
+    height: 100vh;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 body.presentation-mode .time-display {
-    font-size: 12rem;
+    font-size: 16rem;
 }
 
 body.presentation-mode .phase-name {
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
-body.presentation-mode .sidebar-wrapper {
-    position: relative;
-    top: 0;
-    max-height: 100vh;
+body.presentation-mode .phase-number {
+    font-size: 1.5rem;
 }
 
-body.presentation-mode .phase-list {
-    border-radius: 0;
-    max-height: 100vh;
-    padding: 20px;
+body.presentation-mode .progress-bar {
+    max-width: 800px;
+    margin: 40px auto;
 }
 
-body.presentation-mode .phase-list h3 {
-    margin: -20px -20px 20px -20px;
-    padding: 20px 20px 15px 20px;
+body.presentation-mode .time-info {
+    max-width: 800px;
+    margin: 20px auto 0;
+}
+
+body.presentation-mode .btn-fullscreen {
+    top: 30px;
+    right: 30px;
+    padding: 14px 24px;
+    font-size: 1.1rem;
+}
+
+body.presentation-mode .btn-prev-phase,
+body.presentation-mode .btn-next-phase {
+    padding: 16px 28px;
+    font-size: 1.1rem;
 }
 
 /* ===== RESPONSIVE ===== */
